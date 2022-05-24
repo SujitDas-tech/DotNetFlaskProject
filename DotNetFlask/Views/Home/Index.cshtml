@@ -1,0 +1,58 @@
+﻿@*Batch Creation Page*@
+
+@model DotNetFlask.Models.HomeModel;
+
+
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+
+
+@section Styles
+{
+    <style>
+        .Drop{
+            position:relative;
+        }
+
+    </style>
+}
+
+<div>
+    <p class="font-weight-bold text-primary font-italic">Details</p>
+    <form id="myform" asp-action="Index" asp-controller="Home" method="post" class="form-floating modal-dialog-scrollable">
+        <div class="row">
+                         <div class="form-group col-md-2 d-inline">
+                            <label class="form-label" asp-for="Name" >Name</label>
+                           
+                        </div>
+                        <div class="form-group col-md-4 d-inline">
+                             <input class="form-control" asp-for="Name" name="Name" type="text" placeholder="Please Enter Name"/>
+                        </div>
+        </div>
+        <div class="row">
+                        <div class="form-group col-md-2 d-inline">
+                            <label class="form-label" asp-for="Email" >Email</label>
+                            
+                        </div>
+                        <div class="form-group col-md-4 d-inline">
+                            
+                            <input class="form-control" asp-for="Email" name="Email" type="text" placeholder="Please Enter Email" required/>
+                        </div>
+        </div>
+
+
+   </form>
+    <div class="modal-footer">
+               @*<button type="button" class="btn btn-primary" data-save="modal">Save</button> *@ 
+               @* <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> *@
+               <input class="btn btn-primary small" type="submit" form="myform" value="Submit"  />
+
+
+    </div>
+    
+</div>
