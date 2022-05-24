@@ -9,5 +9,5 @@ def Welcome():
     except:
         return ("Some Error Occured")
 if __name__ == '__main__':
-    app.run(host='localhost',port='5000',debug=True)
+    app.run(host='0.0.0.0',debug=False)
 
