@@ -1,0 +1,133 @@
+﻿@*Batch Creation Page*@
+
+@model iDCS_Model_UI.Models.BatchFieldViewModel;
+
+
+
+@{
+    ViewData["Title"] = "Batch Creation Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+
+@if(TempData["success"]!= null)
+{
+    <script type="text/javascript">
+       toastr.success('@TempData["success"]');
+       
+    </script>
+}
+@if(TempData["error"]!= null)
+{
+    <script type="text/javascript">
+       toastr.error('@TempData["error"]');
+       
+    </script>
+}
+
+@section Styles
+{
+    <style>
+        .Drop{
+            position:relative;
+        }
+
+    </style>
+}
+
+<div>
+    <p class="font-weight-bold text-primary font-italic">Create Annotation Batch</p>
+    <form id="myform" asp-action="BatchListPage" asp-controller="Batch" method="post" class="form-floating modal-dialog-scrollable">
+        <div class="row">
+                         <div class="form-group col-md-2 d-inline">
+                            <label class="form-label" asp-for="TagName" >Tag Name</label>
+                           
+                        </div>
+                        <div class="form-group col-md-4 d-inline">
+                             <input class="form-control" asp-for="TagName" name="TagName" type="text" placeholder="Please Enter Tag Name"/>
+                        </div>
+        </div>
+        <div class="row">
+                        <div class="form-group col-md-2 d-inline">
+                            <label class="form-label" asp-for="FolderPath" >Folder Path</label>
+                            
+                        </div>
+                        <div class="form-group col-md-4 d-inline">
+                            
+                            <input class="form-control" asp-for="FolderPath" name="FolderPath" type="text" placeholder="Please Enter Folder Path" required/>
+                        </div>
+        </div>
+
+<div class="row">
+    <div class="form-group col-md-2 d-inline">
+                            <label class="form-label "  >Choose Field Group</label>
+                           
+                        </div>
+    <div class="form-group col-md-4 d-inline" >
+   <select class="form-control" name="Groupid" >
+       <option>Select Option..</option>
+       @foreach(var item in Model.tblFieldGroups){
+       <option value="@item.FieldGroupId" >
+            @item.FieldGroupName
+            
+       </option>
+        
+  
+       }
+   </select>
+   </div>
+   </div>
+   </form>
+    <div class="modal-footer">
+               @*<button type="button" class="btn btn-primary" data-save="modal">Save</button> *@ 
+               @* <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> *@
+               <input class="btn btn-primary small" type="submit" form="myform" value="Submit"  />
+
+
+    </div>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section scripts
+{
+    <script>
+        
+        $(window).on('load',function() {
+                                
+            $('body').removeClass('preload')
+        $('#loading').removeClass('loader-wrapper');
+        $('#loading1').removeClass('loader');
+        $('#loading2').removeClass('loader-inner');
+        });
+    </script>
+}
